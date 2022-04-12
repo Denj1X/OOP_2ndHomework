@@ -14,16 +14,21 @@ public:
     Abonat_Skype(const Abonat_Skype &ab);
 
     static int getNrClienti();
-
     const std::string &getIdSkype() const;
 
     void setIdSkype(const std::string &idSkype);
-
     static void setNrClienti(int nrClienti);
 
     friend std::ostream& operator<<(std::ostream& os, Abonat_Skype* ABS_);
 
     Abonat_Skype operator=(Abonat_Skype &ABS);
     ~Abonat_Skype() = default;
+};
+
+class MyException : public std::exception {
+public:
+    MyException() = default;
+
+    const char* what();
 };
 #endif //MAIN_CPP_ABONAT_SKYPE_H

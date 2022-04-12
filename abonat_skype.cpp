@@ -51,3 +51,7 @@ Abonat_Skype Abonat_Skype::operator=(Abonat_Skype &ABS) {
     this -> id_skype = ABS.id_skype;
     return *this;
 }
+
+const char* MyException::what() {
+    return "Email invalid!";
+}
