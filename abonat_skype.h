@@ -29,6 +29,6 @@ class MyException : public std::exception {
 public:
     MyException() = default;
 
-    const char* what();
+    const char* what() const noexcept override;
 };
 #endif //MAIN_CPP_ABONAT_SKYPE_H

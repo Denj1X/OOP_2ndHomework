@@ -52,6 +52,6 @@ Abonat_Skype Abonat_Skype::operator=(Abonat_Skype &ABS) {
     return *this;
 }
 
-const char* MyException::what() {
+const char* MyException::what() const noexcept {
     return "Email invalid!";
 }
