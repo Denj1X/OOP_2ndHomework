@@ -2,6 +2,7 @@
 #define MAIN_CPP_ABONAT_SKYPE_H
 
 #include<bits/stdc++.h>
+#include <ostream>
 #include "abonat.h"
 
 class Abonat_Skype: public Abonat {
@@ -51,5 +52,24 @@ public:
     friend std::istream& operator>>(std::istream& os, Abonat_Skype_Romania& suici);
 
     Abonat_Skype_Romania operator=(Abonat_Skype_Romania& cpy);
+};
+
+class Abonat_Skype_Extern:public Abonat_Skype {
+private:
+    std::string country;
+public:
+    Abonat_Skype_Extern();
+    Abonat_Skype_Extern(std::string country_, std::string sk_id,
+                        std::string tel, int idx, std::string name);
+    Abonat_Skype_Extern(const Abonat_Skype_Extern& ab);
+
+    const std::string &getCountry() const;
+
+    void setCountry(const std::string &country_);
+
+    friend std::ostream &operator<<(std::ostream &os, const Abonat_Skype_Extern &anExtern);
+    friend std::istream &operator>>(std::ostream &os, Abonat_Skype_Extern& abS_);
+
+    Abonat_Skype_Extern operator=(Abonat_Skype_Extern& ab);
 };
 #endif //MAIN_CPP_ABONAT_SKYPE_H
