@@ -45,7 +45,11 @@ public:
 
     void setAdresaMail(const std::string &adresaMail);
 
+    void printAbonat() override;
 
+    friend std::ostream& operator<<(std::ostream& os, Abonat_Skype_Romania& nolife);
+    friend std::istream& operator>>(std::istream& os, Abonat_Skype_Romania& suici);
 
+    Abonat_Skype_Romania operator=(Abonat_Skype_Romania& cpy);
 };
 #endif //MAIN_CPP_ABONAT_SKYPE_H

@@ -61,7 +61,16 @@ Abonat_Skype_Romania::Abonat_Skype_Romania() {
 }
 
 Abonat_Skype_Romania::Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_,
-                                           std::string name) {}
+                                           std::string name):
+                                           Abonat_Skype(skype_id, nmtel, id_, name)
+                                           {    adresa_mail = adr_mail; }
+Abonat_Skype_Romania::Abonat_Skype_Romania(const Abonat_Skype_Romania &ded) {
+    setId(ded.getId());
+    setNume(ded.getNume());
+    setPhoneNumber(ded.getPhoneNumber());
+    setIdSkype(ded.getIdSkype());
+    setAdresaMail(ded.getAdresaMail());
+}
 
 
 const std::string &Abonat_Skype_Romania::getAdresaMail() const {
@@ -71,3 +80,9 @@ const std::string &Abonat_Skype_Romania::getAdresaMail() const {
 void Abonat_Skype_Romania::setAdresaMail(const std::string &adresaMail) {
     adresa_mail = adresaMail;
 }
+
+void Abonat_Skype_Romania::printAbonat() {
+    std::cout << " Id Skype: " << getIdSkype();
+    std::cout << " | Email: " << getAdresaMail() << '\n';
+}
+

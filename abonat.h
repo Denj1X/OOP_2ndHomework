@@ -21,6 +21,8 @@ public:
     friend std::ostream& operator<<(std::ostream& os, std::shared_ptr<Abonat> abon);
     Abonat operator=(Abonat& ab);
 
+    virtual void printAbonat();
+
     virtual ~Abonat() = default;
 
 

@@ -46,3 +46,4 @@ Abonat Abonat::operator=(Abonat& ab) {
     return *this;
 }
 
+void Abonat::printAbonat() {}
