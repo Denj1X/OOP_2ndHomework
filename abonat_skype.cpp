@@ -55,3 +55,19 @@ Abonat_Skype Abonat_Skype::operator=(Abonat_Skype &ABS) {
 const char* MyException::what() const noexcept {
     return "Email invalid!";
 }
+
+Abonat_Skype_Romania::Abonat_Skype_Romania() {
+    adresa_mail = "no mail";
+}
+
+Abonat_Skype_Romania::Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_,
+                                           std::string name) {}
+
+
+const std::string &Abonat_Skype_Romania::getAdresaMail() const {
+    return adresa_mail;
+}
+
+void Abonat_Skype_Romania::setAdresaMail(const std::string &adresaMail) {
+    adresa_mail = adresaMail;
+}

@@ -31,4 +31,21 @@ public:
 
     const char* what() const noexcept override;
 };
+
+class Abonat_Skype_Romania:public Abonat_Skype {
+private:
+    std::string adresa_mail;
+public:
+    Abonat_Skype_Romania();
+    Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_, std:: string name);
+
+    Abonat_Skype_Romania(const Abonat_Skype_Romania &ded);
+
+    const std::string &getAdresaMail() const;
+
+    void setAdresaMail(const std::string &adresaMail);
+
+
+
+};
 #endif //MAIN_CPP_ABONAT_SKYPE_H
