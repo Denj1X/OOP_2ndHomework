@@ -1,6 +1,8 @@
-#include <iostream>
+#include "agenda.h"
+#include "meniu.h"
+#include <bits/stdc++.h>
 
 int main() {
-    std::cout << "Hello, world!\n";
+    Meniu m;
     return 0;
 }

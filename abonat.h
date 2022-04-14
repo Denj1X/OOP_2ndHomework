@@ -17,11 +17,11 @@ public:
     std::string getPhoneNumber() const;
     void setPhoneNumber(std::string nr_telefon_);
 
+    virtual void printAbonat();
+
     friend std::istream& operator>>(std::istream& os, Abonat& abon);
     friend std::ostream& operator<<(std::ostream& os, std::shared_ptr<Abonat> abon);
     Abonat operator=(Abonat& ab);
-
-    virtual void printAbonat();
 
     virtual ~Abonat() = default;
 

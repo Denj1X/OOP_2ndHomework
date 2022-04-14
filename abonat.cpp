@@ -1,5 +1,5 @@
 #include "abonat.h"
-
+#include "abonat_skype.h"
 #include <bits/stdc++.h>
 
 Abonat::Abonat() {
@@ -30,12 +30,21 @@ std::istream& operator>>(std::istream &os, Abonat& abon) {
     return os;
 }
 
+void Abonat::printAbonat() {}
+
 std::ostream& operator<<(std::ostream &os, std::shared_ptr<Abonat> abon) {
     os << '\n';
     std::shared_ptr<Persoana> prs = abon;
     os << "Nume: " << prs -> getNume();
     os << " ID: " << prs -> getId();
     os << " Telefon: " << abon -> nr_telefon << '\n';
+
+    std::shared_ptr<Abonat_Skype_Romania> pd = std::dynamic_pointer_cast<Abonat_Skype_Romania> (abon);
+    std::shared_ptr<Abonat_Skype_Extern> pe = std::dynamic_pointer_cast<Abonat_Skype_Extern> (abon);
+    if( pd != nullptr )
+        pd->printAbonat();
+    else
+        pe->printAbonat();
     return os;
 }
 
@@ -45,5 +54,3 @@ Abonat Abonat::operator=(Abonat& ab) {
     this -> nr_telefon = ab.nr_telefon;
     return *this;
 }
-
-void Abonat::printAbonat() {}
