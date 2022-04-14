@@ -7,11 +7,18 @@ Abonat::Abonat() {
 }
 
 Abonat::Abonat(const std::string &nume_, int id_, std::string nrTelefon) : Persoana(nume_, id_),
-                                                                                 nr_telefon(std::move(nrTelefon)) {}
+nr_telefon(std::move(nrTelefon)) {}
+
+
 std::string Abonat::getPhoneNumber() const {
     return nr_telefon;
 }
 
+Abonat::Abonat(const Abonat& ab) {
+    setId(ab.getId());
+    setNume(ab.getNume());
+    setPhoneNumber(ab.getPhoneNumber());
+}
 void Abonat::setPhoneNumber(std::string nr_telefon_) {
     nr_telefon = nr_telefon_;
 }
