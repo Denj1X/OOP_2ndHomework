@@ -12,6 +12,7 @@ public:
     Persoana();
 
     Persoana(std::string nume_, int id_);
+    Persoana(const Persoana& pers);
     virtual ~Persoana() = default;
 
     void setId(int id_);

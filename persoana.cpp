@@ -11,6 +11,11 @@ Persoana::Persoana(std::string nume_, int id_) {
     id = id_;
 }
 
+Persoana::Persoana(const Persoana& pers) {
+    setNume(pers.getNume());
+    setId(pers.getId());
+}
+
 int Persoana::getId() const {
     return id;
 }
