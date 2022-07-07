@@ -6,12 +6,12 @@
 #include "abonat.h"
 
 class Abonat_Skype: public Abonat {
-private:
+protected:
     std::string id_skype;
     static int nr_clienti;
 public:
     Abonat_Skype();
-    Abonat_Skype(std::string skype_id, std::string nmtel, int id_, std:: string name);
+    Abonat_Skype(std::string skype_id, std::string nmtel, int id_, const std:: string& name);
     Abonat_Skype(const Abonat_Skype &ab);
 
     static int getNrClienti();
@@ -34,11 +34,11 @@ public:
 };
 
 class Abonat_Skype_Romania:public Abonat_Skype {
-private:
+protected:
     std::string adresa_mail;
 public:
     Abonat_Skype_Romania();
-    Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_, std:: string name);
+    Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_, const std:: string& name);
 
     Abonat_Skype_Romania(const Abonat_Skype_Romania &ded);
 
@@ -60,7 +60,7 @@ private:
 public:
     Abonat_Skype_Extern();
     Abonat_Skype_Extern(std::string country_, std::string sk_id,
-                        std::string tel, int idx, std::string name);
+                        std::string tel, int idx, const std::string& name);
     Abonat_Skype_Extern(const Abonat_Skype_Extern& ab);
 
     const std::string &getCountry() const;

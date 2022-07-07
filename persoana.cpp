@@ -1,13 +1,15 @@
 #include "persoana.h"
+
 #include <bits/stdc++.h>
 
+#include <utility>
 Persoana::Persoana() {
     nume = "null";
     id = -1;
 }
 
 Persoana::Persoana(std::string nume_, int id_) {
-    nume = nume_;
+    nume = std::move(nume_);
     id = id_;
 }
 
@@ -32,7 +34,7 @@ const std::string &Persoana::getNume() const {
     return nume;
 }
 
-std::ostream &operator<<(std::ostream &os, std::shared_ptr<Persoana> prs) {
+std::ostream &operator<<(std::ostream &os,const std::shared_ptr<Persoana>& prs) {
     os << "Nume: " << prs -> nume;
     os << ", ID-ul: " << prs -> id;
     return os;

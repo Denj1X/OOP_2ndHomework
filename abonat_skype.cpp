@@ -1,6 +1,8 @@
 #include "abonat_skype.h"
 #include <bits/stdc++.h>
 
+#include <utility>
+
 int Abonat_Skype::nr_clienti = 0;
 
 Abonat_Skype::Abonat_Skype() {
@@ -8,13 +10,13 @@ Abonat_Skype::Abonat_Skype() {
     nr_clienti++;
 }
 
-Abonat_Skype::Abonat_Skype(std::string skype_id, std::string nmtel, int id_, std::string name):
-Abonat(name, id_, nmtel) {
-    id_skype = skype_id;
+Abonat_Skype::Abonat_Skype(std::string skype_id, std::string nmtel, int id_, const std::string& name):
+Abonat(name, id_, std::move(nmtel)) {
+    id_skype = std::move(skype_id);
     nr_clienti++;
 }
 
-Abonat_Skype::Abonat_Skype(const Abonat_Skype &ab) {
+Abonat_Skype::Abonat_Skype(const Abonat_Skype &ab): Abonat(ab.nume, ab.id, ab.nr_telefon) {
     setId(ab.getId());
     setNume(ab.getNume());
     setPhoneNumber(ab.getPhoneNumber());
@@ -61,11 +63,11 @@ Abonat_Skype_Romania::Abonat_Skype_Romania() {
 }
 
 Abonat_Skype_Romania::Abonat_Skype_Romania(std::string adr_mail, std::string skype_id, std::string nmtel, int id_,
-                                           std::string name):
-                                           Abonat_Skype(skype_id, nmtel, id_, name)
-                                           {    adresa_mail = adr_mail; }
+                                           const std::string& name):
+                                           Abonat_Skype(std::move(skype_id), std::move(nmtel), id_, name)
+                                           {    adresa_mail = std::move(adr_mail); }
 
-Abonat_Skype_Romania::Abonat_Skype_Romania(const Abonat_Skype_Romania &ded) {
+Abonat_Skype_Romania::Abonat_Skype_Romania(const Abonat_Skype_Romania &ded): Abonat_Skype(ded.id_skype, ded.nr_telefon, ded.id, ded.nume) {
     setId(ded.getId());
     setNume(ded.getNume());
     setPhoneNumber(ded.getPhoneNumber());
@@ -103,10 +105,10 @@ std::istream& operator>>(std::istream& os, Abonat_Skype_Romania& abS_) {
     std::cout << " Id Skype: "; os >> id_sk;
     std::cout << " Email:   "; os >> mail;
 
-    bool ok = 0;
-    for( int i = 0; i < (int)mail.length(); i++ )
-        if( mail[i] == '@' ) {
-            ok = 1;
+    bool ok = false;
+    for(char i : mail)
+        if( i == '@' ) {
+            ok = true;
             break;
         }
     if(!ok)
@@ -133,16 +135,16 @@ Abonat_Skype_Extern::Abonat_Skype_Extern() {
 }
 
 Abonat_Skype_Extern::Abonat_Skype_Extern(std::string country_, std::string sk_id, std::string tel, int idx,
-                                         std::string name):
-                                         Abonat_Skype(sk_id, tel, idx, name) {
-    country = country_;
+                                         const std::string& name):
+                                         Abonat_Skype(std::move(sk_id), std::move(tel), idx, name) {
+    country = std::move(country_);
 }
 
 const std::string &Abonat_Skype_Extern::getCountry() const {
     return country;
 }
 
-Abonat_Skype_Extern::Abonat_Skype_Extern(const Abonat_Skype_Extern& ab) {
+Abonat_Skype_Extern::Abonat_Skype_Extern(const Abonat_Skype_Extern& ab): Abonat_Skype(ab.id_skype, ab.nr_telefon, ab.id, ab.nume) {
     setIdSkype(ab.getIdSkype());
     setCountry(ab.getCountry());
     setId(ab.getId());

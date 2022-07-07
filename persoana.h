@@ -7,7 +7,7 @@
 class Persoana {
 protected:
     std::string nume;
-    int id;
+    int id{};
 public:
     Persoana();
 
@@ -22,7 +22,9 @@ public:
 
     const std::string &getNume() const;
 
-    friend std::ostream &operator<<(std::ostream &os, std::shared_ptr<Persoana> prs);
+    friend std::ostream &operator<<(std::ostream &os, const std::shared_ptr<Persoana>& prs);
 
 };
 #endif
+///Clang-Tidy: Function 'getId' should be marked [[nodiscard]]
+///Clang-Tidy: Function 'getNume' should be marked [[nodiscard]]

@@ -2,6 +2,8 @@
 #include "abonat_skype.h"
 #include <bits/stdc++.h>
 
+#include <utility>
+
 Abonat::Abonat() {
     nr_telefon = "000000000";
 }
@@ -14,13 +16,13 @@ std::string Abonat::getPhoneNumber() const {
     return nr_telefon;
 }
 
-Abonat::Abonat(const Abonat& ab) {
-    setId(ab.getId());
-    setNume(ab.getNume());
+Abonat::Abonat(const Abonat& ab):Persoana(ab.nume, ab.id) {
+    //setId(ab.getId());
+    //setNume(ab.getNume());
     setPhoneNumber(ab.getPhoneNumber());
 }
 void Abonat::setPhoneNumber(std::string nr_telefon_) {
-    nr_telefon = nr_telefon_;
+    nr_telefon = std::move(nr_telefon_);
 }
 
 std::istream& operator>>(std::istream &os, Abonat& abon) {
@@ -39,7 +41,7 @@ std::istream& operator>>(std::istream &os, Abonat& abon) {
 
 void Abonat::printAbonat() {}
 
-std::ostream& operator<<(std::ostream &os, std::shared_ptr<Abonat> abon) {
+std::ostream& operator<<(std::ostream &os,const std::shared_ptr<Abonat>& abon) {
     os << '\n';
     std::shared_ptr<Persoana> prs = abon;
     os << "Nume: " << prs -> getNume();
@@ -56,8 +58,8 @@ std::ostream& operator<<(std::ostream &os, std::shared_ptr<Abonat> abon) {
 }
 
 Abonat Abonat::operator=(Abonat& ab) {
-    ab.setId( ab.getId() );
-    ab.setNume( ab.getNume() );
-    this -> nr_telefon = ab.nr_telefon;
+    setId( ab.getId() );
+    setNume( ab.getNume() );
+    nr_telefon = ab.nr_telefon;
     return *this;
 }
