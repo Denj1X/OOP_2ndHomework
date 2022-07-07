@@ -1,23 +1,23 @@
 #include "agenda.h"
 #include <bits/stdc++.h>
 
-Agenda:: Agenda() {}
+Agenda:: Agenda() = default;
 
-void Agenda::AdAbonat(std::shared_ptr<Abonat> ABS) {
+void Agenda::AdAbonat(const std::shared_ptr<Abonat>& ABS) {
     abonati.push_back(ABS);
 }
 
-Abonat Agenda::operator[](const std::string name_) {
-    for(int i = 0; i < (int)abonati.size(); i++)
-        if(!name_.compare( abonati[i]->getNume()))
-            return *abonati[i];
+Abonat Agenda::operator[](const std::string& name_) {
+    for(auto & i : abonati)
+        if(!name_.compare( i->getNume()))
+            return *i;
 
-    return Abonat();
+    return {};
 }
 
 std::ostream &operator<<(std::ostream &os, Agenda &ag) {
     os << '\n';
-    if(ag.abonati.size() == 0)
+    if(ag.abonati.empty())
         os << "Nu sunt abonati" << '\n';
     for(int i = 0; i < (int)ag.abonati.size(); i++) {
         os << "Abonatul " << i + 1 << ": ";

@@ -10,9 +10,9 @@ private:
 public:
     Agenda();
 
-    void AdAbonat(std::shared_ptr<Abonat> ABS);
+    void AdAbonat(const std::shared_ptr<Abonat>& ABS);
 
-    Abonat operator[](const std::string name_);
+    Abonat operator[](const std::string& name_);
 
     friend std::ostream &operator<<(std::ostream &os, Agenda &ag);
 };
